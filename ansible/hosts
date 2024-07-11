@@ -1,0 +1,2 @@
+[workers]
+18.143.118.47 ansible_user=ubuntu
