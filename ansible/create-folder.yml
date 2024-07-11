@@ -14,4 +14,4 @@
         dest: /ubuntu/folder1/
         mode: '0755'
     - name: Execute the shellscript
-      command: bash /ubuntu/folder1/createfolder.sh    
+      command: bash /ubuntu/folder1/createfolder.sh
