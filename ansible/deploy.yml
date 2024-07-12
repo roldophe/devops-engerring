@@ -1,16 +1,4 @@
-#---
-#- name: Execute the shellscript
-#  hosts: workers
-#  become: true
-#  vars:
-#    external_port: "{{ external_port }}"
-#    internal_port: "{{ internal_port }}"
-#    docker_image: "{{ docker_image }}"
-#
-#  tasks:
-#    - name: Deploy with docker
-#      command: docker run -dp "{{ external_port }}":"{{ internal_port }}" "{{ docker_image }}"
-
+---
 - name: Execute the shell script
   hosts: workers
   become: true
@@ -22,5 +10,3 @@
   tasks:
     - name: Deploy with Docker
       command: docker run -d -p "{{ external_port }}":"{{ internal_port }}" "{{ docker_image }}"
-#      args:
-#        chdir: /path/to/your/directory  # Change this path to where your script needs to run from
