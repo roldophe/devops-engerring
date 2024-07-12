@@ -33,6 +33,11 @@
         name: nginx
         state: reloaded
 
+    - name: Install Certbot
+      apt:
+        name: certbot
+        state: present
+
     - name: Obtain and Install SSL Certificate with Certbot
       command: certbot --nginx -d {{ domain_name }} --non-interactive --agree-tos -m khoemradom1771@email.com --redirect
       args:
