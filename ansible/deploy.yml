@@ -9,4 +9,4 @@
 
   tasks:
     - name: Deploy with docker
-      command: docker run -dp "{{ external_port }}":"{{ external_port }}" "{{ docker_image }}"
+      command: docker run -dp "{{ external_port }}":"{{ internal_port }}" "{{ docker_image }}"
