@@ -4,7 +4,7 @@
   become: true
   vars:
     external_port: "{{ external_port }}"
-    internal_port: "{{ external_port }}"
+    internal_port: "{{ internal_port }}"
     docker_image: "{{ docker_image }}"
 
   tasks:
