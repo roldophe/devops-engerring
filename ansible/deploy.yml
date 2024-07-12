@@ -39,3 +39,8 @@
         creates: /etc/letsencrypt/live/{{ domain_name }}/fullchain.pem
       notify:
         - Reload Nginx
+  handlers:
+    - name: Reload Nginx
+      service:
+        name: nginx
+        state: reloaded
