@@ -32,3 +32,10 @@
       service:
         name: nginx
         state: reloaded
+
+    - name: Obtain and Install SSL Certificate with Certbot
+      command: certbot --nginx -d {{ domain_name }} --non-interactive --agree-tos -m khoemradom1771@email.com --redirect
+      args:
+        creates: /etc/letsencrypt/live/{{ domain_name }}/fullchain.pem
+      notify:
+        - Reload Nginx
