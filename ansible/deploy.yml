@@ -32,18 +32,19 @@
       service:
         name: nginx
         state: reloaded
-
-    - name: Install Certbot
+    - name: Install Certbot and Certbot Nginx plugin
       apt:
-        name: certbot
+        name: "{{ item }}"
         state: present
+      with_items:
+        - certbot
+        - python3-certbot-nginx  # Install the Certbot Nginx plugin
 
     - name: Obtain and Install SSL Certificate with Certbot
       command: certbot --nginx -d {{ domain_name }} --non-interactive --agree-tos -m khoemradom1771@email.com --redirect
       args:
         creates: /etc/letsencrypt/live/{{ domain_name }}/fullchain.pem
-      notify:
-        - Reload Nginx
+      notify: Reload Nginx
   handlers:
     - name: Reload Nginx
       service:
