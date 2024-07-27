@@ -15,9 +15,10 @@
         mode: 0755
 
     - name: copy k8s deployment file
-      copy:src:
-        src: "../shellscript/deploy-k8s-CD/springdeploy.sh"
+      copy:
+        src: "{{ playbook_dir }}/../shellscript/deploy-k8s-CD/springdeploy.sh"
         dest: /home/radomkhoem/deployment/springdeploy.sh
+        remote_src: yes
 
     - name: Run script to deploy
       command: sh /home/radomkhoem/deployment/springdeploy.sh "{{ fullImageName }}"
