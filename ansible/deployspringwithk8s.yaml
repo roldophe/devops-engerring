@@ -1,0 +1,23 @@
+---
+- name: Run deploy with k8s
+  hosts: workers
+  become: true
+  vars:
+    registry: "{{ registry }}"
+    imageName: "{{ imageName }}"
+    tag: "{{ tag }}"
+    fullImageName: "{{ registry }}/{{ imageName }}:{{ tag }}"
+  tasks:
+    - name: create directory
+      file:
+        path: /home/radomkhoem/deployment
+        state: directory
+        mode: 0755
+
+    - name: copy k8s deployment file
+      copy:
+        src: "{{ playbook_dir }}/shellscript/deploy-k8s-CD/springdeploy.sh"
+        dest: /home/radomkhoem/deployment/springdeploy.sh
+
+    - name: Run script to deploy
+      command: sh /home/radomkhoem/deployment/springdeploy.sh "{{ fullImageName }}"
