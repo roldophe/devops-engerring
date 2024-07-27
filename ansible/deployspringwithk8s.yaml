@@ -18,7 +18,7 @@
       copy:
         src: "{{ playbook_dir }}/../shellscript/deploy-k8s-CD/springdeploy.sh"
         dest: /home/radomkhoem/deployment/springdeploy.sh
-        remote_src: no
+        remote_src: yes
 
     - name: Run script to deploy
       command: sh /home/radomkhoem/deployment/springdeploy.sh "{{ fullImageName }}"
